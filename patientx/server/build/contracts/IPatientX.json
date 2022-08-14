@@ -1,0 +1,1116 @@
+{
+  "contractName": "IPatientX",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getMedicalExaminationsShareable",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "doctorAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "patientAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "data",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct MyLibrary.MedicalExamination[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "enlistMedicalInstitute",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.14+commit.80d49f37\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"enlistMedicalInstitute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMedicalExaminationsShareable\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"doctorAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"patientAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"internalType\":\"struct MyLibrary.MedicalExamination[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/InstitutesInteraction.sol\":\"IPatientX\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/InstitutesInteraction.sol\":{\"keccak256\":\"0x5700ae8c7a87a24eef5d2c64e311b73c0deef9a77224532f2120f9781c384e10\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://80625a13784f8dca03e994e28de7ed359e82547e68256409f04791739c43ba52\",\"dweb:/ipfs/QmS2C4hSA2FZRhTPmBNgaxcxdDhZTt8uXJZBg1LxV8mTTD\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "//SPDX-License-Identifier: UNLICENSED\r\n\r\npragma solidity >=0.7.0 <0.9.0;\r\n\r\nlibrary MyLibrary {\r\n    struct Doctor {\r\n        address doctorAddress;\r\n        string name;\r\n    }\r\n\r\n    struct Patient{\r\n        address patientAddress;\r\n        string name;\r\n    }\r\n\r\n    struct MedicalInstitute{\r\n        address instituteAddress;\r\n        string name;\r\n    }\r\n\r\n    struct MedInstituteData{\r\n        uint256 numOfMedExams;\r\n        uint256 numOfPatientsSharingData;\r\n    }\r\n\r\n    struct MedicalExamination {\r\n        address doctorAddress;\r\n        address patientAddress;\r\n        string data;\r\n    }\r\n}\r\n\r\ninterface IPatientX {\r\n    function getMedicalExaminationsShareable() payable external returns (MyLibrary.MedicalExamination[] memory);\r\n\r\n    function enlistMedicalInstitute(string calldata _name) external;\r\n}\r\n\r\ncontract InstitutesInteraction {\r\n    function enlistMedicalInstitute(IPatientX _address, string calldata _name) external {\r\n        _address.enlistMedicalInstitute(_name);\r\n    }\r\n\r\n    function getMedicalExaminationsShareable(address _address) external payable returns(MyLibrary.MedicalExamination[] memory) {\r\n        IPatientX patientXContract = IPatientX(_address);\r\n        return patientXContract.getMedicalExaminationsShareable{value: msg.value}();\r\n    }\r\n}",
+  "sourcePath": "C:\\Users\\Martin\\Documents\\asd\\server\\contracts\\InstitutesInteraction.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/InstitutesInteraction.sol",
+    "exportedSymbols": {
+      "IPatientX": [
+        42
+      ],
+      "InstitutesInteraction": [
+        82
+      ],
+      "MyLibrary": [
+        29
+      ]
+    },
+    "id": 83,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "41:31:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "MyLibrary",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 29,
+        "linearizedBaseContracts": [
+          29
+        ],
+        "name": "MyLibrary",
+        "nameLocation": "84:9:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "MyLibrary.Doctor",
+            "id": 6,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "mutability": "mutable",
+                "name": "doctorAddress",
+                "nameLocation": "134:13:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "126:21:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "126:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "165:4:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "158:11:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "158:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Doctor",
+            "nameLocation": "108:6:0",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "101:76:0",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "MyLibrary.Patient",
+            "id": 11,
+            "members": [
+              {
+                "constant": false,
+                "id": 8,
+                "mutability": "mutable",
+                "name": "patientAddress",
+                "nameLocation": "218:14:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 11,
+                "src": "210:22:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "210:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "250:4:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 11,
+                "src": "243:11:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 9,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "243:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Patient",
+            "nameLocation": "192:7:0",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "185:77:0",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "MyLibrary.MedicalInstitute",
+            "id": 16,
+            "members": [
+              {
+                "constant": false,
+                "id": 13,
+                "mutability": "mutable",
+                "name": "instituteAddress",
+                "nameLocation": "312:16:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 16,
+                "src": "304:24:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 12,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "304:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "346:4:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 16,
+                "src": "339:11:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 14,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "339:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "MedicalInstitute",
+            "nameLocation": "277:16:0",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "270:88:0",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "MyLibrary.MedInstituteData",
+            "id": 21,
+            "members": [
+              {
+                "constant": false,
+                "id": 18,
+                "mutability": "mutable",
+                "name": "numOfMedExams",
+                "nameLocation": "408:13:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 21,
+                "src": "400:21:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "400:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 20,
+                "mutability": "mutable",
+                "name": "numOfPatientsSharingData",
+                "nameLocation": "440:24:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 21,
+                "src": "432:32:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 19,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "432:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "MedInstituteData",
+            "nameLocation": "373:16:0",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "366:106:0",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "MyLibrary.MedicalExamination",
+            "id": 28,
+            "members": [
+              {
+                "constant": false,
+                "id": 23,
+                "mutability": "mutable",
+                "name": "doctorAddress",
+                "nameLocation": "525:13:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 28,
+                "src": "517:21:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 22,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "517:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 25,
+                "mutability": "mutable",
+                "name": "patientAddress",
+                "nameLocation": "557:14:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 28,
+                "src": "549:22:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 24,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "549:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 27,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "589:4:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 28,
+                "src": "582:11:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 26,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "582:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "MedicalExamination",
+            "nameLocation": "487:18:0",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "480:121:0",
+            "visibility": "public"
+          }
+        ],
+        "scope": 83,
+        "src": "76:528:0",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IPatientX",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 42,
+        "linearizedBaseContracts": [
+          42
+        ],
+        "name": "IPatientX",
+        "nameLocation": "618:9:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "1277762b",
+            "id": 36,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMedicalExaminationsShareable",
+            "nameLocation": "644:31:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 30,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "675:2:0"
+            },
+            "returnParameters": {
+              "id": 35,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 34,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 36,
+                  "src": "704:37:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_MedicalExamination_$28_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct MyLibrary.MedicalExamination[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 32,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 31,
+                        "name": "MyLibrary.MedicalExamination",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 28,
+                        "src": "704:28:0"
+                      },
+                      "referencedDeclaration": 28,
+                      "src": "704:28:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_MedicalExamination_$28_storage_ptr",
+                        "typeString": "struct MyLibrary.MedicalExamination"
+                      }
+                    },
+                    "id": 33,
+                    "nodeType": "ArrayTypeName",
+                    "src": "704:30:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_MedicalExamination_$28_storage_$dyn_storage_ptr",
+                      "typeString": "struct MyLibrary.MedicalExamination[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "703:39:0"
+            },
+            "scope": 42,
+            "src": "635:108:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "42aedbb0",
+            "id": 41,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "enlistMedicalInstitute",
+            "nameLocation": "760:22:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 39,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 38,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nameLocation": "799:5:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41,
+                  "src": "783:21:0",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 37,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "783:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "782:23:0"
+            },
+            "returnParameters": {
+              "id": 40,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "814:0:0"
+            },
+            "scope": 42,
+            "src": "751:64:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 83,
+        "src": "608:210:0",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "InstitutesInteraction",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 82,
+        "linearizedBaseContracts": [
+          82
+        ],
+        "name": "InstitutesInteraction",
+        "nameLocation": "831:21:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 56,
+              "nodeType": "Block",
+              "src": "944:57:0",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 53,
+                        "name": "_name",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 47,
+                        "src": "987:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_calldata_ptr",
+                          "typeString": "string calldata"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_calldata_ptr",
+                          "typeString": "string calldata"
+                        }
+                      ],
+                      "expression": {
+                        "id": 50,
+                        "name": "_address",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 45,
+                        "src": "955:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IPatientX_$42",
+                          "typeString": "contract IPatientX"
+                        }
+                      },
+                      "id": 52,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "enlistMedicalInstitute",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 41,
+                      "src": "955:31:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory) external"
+                      }
+                    },
+                    "id": 54,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "955:38:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 55,
+                  "nodeType": "ExpressionStatement",
+                  "src": "955:38:0"
+                }
+              ]
+            },
+            "functionSelector": "4a1ac8d3",
+            "id": 57,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "enlistMedicalInstitute",
+            "nameLocation": "869:22:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 48,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 45,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "902:8:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 57,
+                  "src": "892:18:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IPatientX_$42",
+                    "typeString": "contract IPatientX"
+                  },
+                  "typeName": {
+                    "id": 44,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 43,
+                      "name": "IPatientX",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 42,
+                      "src": "892:9:0"
+                    },
+                    "referencedDeclaration": 42,
+                    "src": "892:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPatientX_$42",
+                      "typeString": "contract IPatientX"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 47,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nameLocation": "928:5:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 57,
+                  "src": "912:21:0",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 46,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "912:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "891:43:0"
+            },
+            "returnParameters": {
+              "id": 49,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "944:0:0"
+            },
+            "scope": 82,
+            "src": "860:141:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "1132:153:0",
+              "statements": [
+                {
+                  "assignments": [
+                    68
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 68,
+                      "mutability": "mutable",
+                      "name": "patientXContract",
+                      "nameLocation": "1153:16:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 80,
+                      "src": "1143:26:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IPatientX_$42",
+                        "typeString": "contract IPatientX"
+                      },
+                      "typeName": {
+                        "id": 67,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 66,
+                          "name": "IPatientX",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 42,
+                          "src": "1143:9:0"
+                        },
+                        "referencedDeclaration": 42,
+                        "src": "1143:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IPatientX_$42",
+                          "typeString": "contract IPatientX"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 72,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "id": 70,
+                        "name": "_address",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 59,
+                        "src": "1182:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 69,
+                      "name": "IPatientX",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 42,
+                      "src": "1172:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IPatientX_$42_$",
+                        "typeString": "type(contract IPatientX)"
+                      }
+                    },
+                    "id": 71,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1172:19:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPatientX_$42",
+                      "typeString": "contract IPatientX"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1143:48:0"
+                },
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 73,
+                          "name": "patientXContract",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 68,
+                          "src": "1209:16:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IPatientX_$42",
+                            "typeString": "contract IPatientX"
+                          }
+                        },
+                        "id": 74,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "getMedicalExaminationsShareable",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 36,
+                        "src": "1209:48:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_payable$__$returns$_t_array$_t_struct$_MedicalExamination_$28_memory_ptr_$dyn_memory_ptr_$",
+                          "typeString": "function () payable external returns (struct MyLibrary.MedicalExamination memory[] memory)"
+                        }
+                      },
+                      "id": 77,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "names": [
+                        "value"
+                      ],
+                      "nodeType": "FunctionCallOptions",
+                      "options": [
+                        {
+                          "expression": {
+                            "id": 75,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "1265:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 76,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "src": "1265:9:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "src": "1209:66:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_payable$__$returns$_t_array$_t_struct$_MedicalExamination_$28_memory_ptr_$dyn_memory_ptr_$value",
+                        "typeString": "function () payable external returns (struct MyLibrary.MedicalExamination memory[] memory)"
+                      }
+                    },
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1209:68:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_MedicalExamination_$28_memory_ptr_$dyn_memory_ptr",
+                      "typeString": "struct MyLibrary.MedicalExamination memory[] memory"
+                    }
+                  },
+                  "functionReturnParameters": 65,
+                  "id": 79,
+                  "nodeType": "Return",
+                  "src": "1202:75:0"
+                }
+              ]
+            },
+            "functionSelector": "5ff29c96",
+            "id": 81,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMedicalExaminationsShareable",
+            "nameLocation": "1018:31:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 59,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "1058:8:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "1050:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 58,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1050:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1049:18:0"
+            },
+            "returnParameters": {
+              "id": 65,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 64,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "1093:37:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_MedicalExamination_$28_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct MyLibrary.MedicalExamination[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 62,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 61,
+                        "name": "MyLibrary.MedicalExamination",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 28,
+                        "src": "1093:28:0"
+                      },
+                      "referencedDeclaration": 28,
+                      "src": "1093:28:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_MedicalExamination_$28_storage_ptr",
+                        "typeString": "struct MyLibrary.MedicalExamination"
+                      }
+                    },
+                    "id": 63,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1093:30:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_MedicalExamination_$28_storage_$dyn_storage_ptr",
+                      "typeString": "struct MyLibrary.MedicalExamination[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1092:39:0"
+            },
+            "scope": 82,
+            "src": "1009:276:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 83,
+        "src": "822:466:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "41:1247:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.14+commit.80d49f37.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-06-12T21:01:29.202Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

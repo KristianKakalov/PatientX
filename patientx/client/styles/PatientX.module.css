@@ -1,0 +1,146 @@
+.container {
+    background-image: linear-gradient(-100deg, #A2F2F1 0%, #B19AFE 100%);
+    min-height: 100vh;
+}
+
+.title {
+    color: #333;
+    padding-top: 10vh;
+    text-align: center;
+    font-size: 6em;
+}
+
+.connectWalletMessage {
+    color: #333;
+    text-align: center;
+    font-size: 3em;
+}
+
+.connectWalletBtn {
+    color: #333;
+    text-align: center;
+    margin: 0.5em auto;
+    font-size: 4em;
+    display: block;
+}
+
+@media screen and (max-width: 650px){
+    .connectWalletBtn {
+        font-size: 2em;
+    }
+}
+
+
+.registerMessage {
+    color: #333;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 1em;
+}
+
+.registerContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px){
+    .registerContainer {
+        flex-direction: column;
+    }
+}
+
+.registerBtn {
+    color: #333;
+    text-align: center;
+    width: 18em;
+}
+
+.input {
+    width: 20em;
+    margin-right: 2em;
+    min-width: 15em;
+    padding-left: 0.4em;
+    border: 1px solid #4154E0;
+    height: 2.5rem;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid #557de0;
+}
+
+@media screen and (max-width: 600px){
+    .input {
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .registerBtn {
+        margin-bottom: 2em;
+    }
+}
+
+.transactionInfo {
+    text-align: center;
+    padding-top: 1em;
+	font-size: 20px;
+	text-transform: uppercase;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.returnContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    align-items: center;
+    flex-direction: column;
+	font-size: 30px;
+}
+
+.doctorContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    align-items: center;
+}
+
+@media screen and (max-width: 800px){
+    .doctorContainer {
+        flex-direction: column;
+    }
+}
+
+.inputPatient {
+    width: 20em;
+    margin-right: 2em;
+    min-width: 15em;
+    padding-left: 0.4em;
+    border: 1px solid #4154E0;
+    height: 2.5rem;
+}
+
+.inputPatient:focus {
+    outline: none;
+    border: 2px solid #557de0;
+}
+
+.registerBtnDoctor {
+    color: #333;
+    text-align: center;
+    width: 18em;
+}
+
+
+@media screen and (max-width: 800px){
+    .inputPatient {
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .registerBtnDoctor {
+        margin-bottom: 2em;
+    }
+}
+
